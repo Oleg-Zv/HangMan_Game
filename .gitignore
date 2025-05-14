@@ -1,0 +1,54 @@
+### IntelliJ IDEA ###
+.idea/
+*.iml
+
+### Eclipse ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+bin/
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+### VS Code ###
+.vscode/
+
+### Mac OS ###
+.DS_Store
+
+### Other IDEs and Build Tools ###
+target/
+*.jar
+*.war
+*.ear
+*.log
+*.log.*
+apidocs/
+
+# JavaDoc
+apidocs/
+
+# Maven
+.mvn/
+mvnw
+mvnw.cmd
+# Gradle
+build/
+gradlew
+gradlew.bat
+
+# Temporary Files
+*.tmp
+*.bak
+*.swp
+*.swo
+*.pyc
