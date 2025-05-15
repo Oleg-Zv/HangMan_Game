@@ -11,7 +11,7 @@ public class WordSelector {
         List<String> errorsList = new ArrayList<>();
         lockWord.append(word.replaceAll("[а-яА-Я]", "_"));
         int countError = 0;// для ошибок кол=во
-      //  System.out.println("Введите букву: ");
+
         Scanner sc = new Scanner(System.in);
         String letter = "";
 HangmanDrawer drawer = new HangmanDrawer();
