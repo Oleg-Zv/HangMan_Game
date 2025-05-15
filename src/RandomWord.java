@@ -10,7 +10,8 @@ public class RandomWord {
     private static final String PATH = "src/Words.txt";
 
 
-    public static String randomWord() throws IOException {//рандом слово из файла
+    public  String randomWord() throws IOException {//рандом слово из файла
+
         Random random = new Random();
         List<String> wordsList = new ArrayList<>();
         try
@@ -30,7 +31,7 @@ public class RandomWord {
         String secretWord = wordsList.get(random.nextInt(wordsList.size()));
         System.out.println("Слово загадано\n");
 
-        //System.out.println(secretWord);
+        System.out.println(secretWord);
         return secretWord;
     }
 }

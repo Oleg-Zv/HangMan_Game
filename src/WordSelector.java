@@ -3,10 +3,10 @@ import java.util.List;
 import java.util.Scanner;
 
 public class WordSelector{
-    private final int COUNT_ERROR = 5;
+    private final int COUNT_ERROR = 6;
 
 
-    public static void playGame(String word,int COUNT_ERROR) {//не готово/
+    public void playGame(String word) {//не готово/
         StringBuilder lockWord = new StringBuilder();
         List<String> errorsList = new ArrayList<>();
         lockWord.append(word.replaceAll("[а-яА-Я]", "_"));
@@ -22,17 +22,32 @@ public class WordSelector{
                 if (letter.equalsIgnoreCase(String.valueOf(word.charAt(i)))) {
                     found = true;
                     lockWord.setCharAt(i, letter.charAt(0));//заменяем символ
+
                 }
+
             }
             if (!found) {
                 errorsList.add(letter);
                 countError++;
             }
 
+            HangmanDrawer h = new HangmanDrawer();
             System.out.println("\tСлово : " + lockWord);
+            System.out.println("\tОшибки: (" + countError + "):" + errorsList);
+            System.out.println("\tБуква: " + letter);
+            h.draw(countError);
+
+            System.out.println("\n\tСлово : " + lockWord);
             System.out.println("\tОшибки: (" + countError + "):" + errorsList);
             System.out.println("\tБуква: " + letter );
 
+
+
         }
+//            System.out.println("\tСлово : " + lockWord);
+//            System.out.println("\tОшибки: (" + countError + "):" + errorsList);
+//            System.out.println("\tБуква: " + letter );
+
+
     }
 }

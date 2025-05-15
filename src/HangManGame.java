@@ -1,28 +1,34 @@
-import java.io.*;
-import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+
+import java.io.IOException;
 import java.util.Scanner;
 
 
 public class HangManGame {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
+
+HangManGame game = new HangManGame();
+game.showInfo();
+game.startsGame();
+
+RandomWord word = new RandomWord();
+
+WordSelector wordSelector = new WordSelector();
+wordSelector.playGame(word.randomWord());
+
+
 
     }
+        public void showInfo () {
+            System.out.printf( "Добро пожаловать в Висилицу!");
+            System.out.println("Ввведите \"s\"-tart  для начала игры,иначе \"e\"-xit для выхода.");
 
+        }
 
-    public static  void showInfo(){
-        System.out.println("Добро пожаловать в Висилицу!");
-        System.out.println("Ввведите \"s\"-tart  для начала игры,иначе \"e\"-xit для выхода.");
+        public  boolean startsGame() {//старт
+            Scanner scanner = new Scanner(System.in);
+            String start = scanner.nextLine();
+            return start.equalsIgnoreCase("s");
 
-      }
-
-    public static boolean startsGame() {//старт
-        Scanner scanner = new Scanner(System.in);
-        String start = scanner.nextLine();
-       return start.equalsIgnoreCase("s");
-
-      }
+        }
     }
 
