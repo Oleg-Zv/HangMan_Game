@@ -11,7 +11,7 @@ public class HangManGame {
         System.out.println("Ввведите \"s\"-tart  для начала игры,иначе \"e\"-xit для выхода.");
         startsGame();
         randomWord();
-
+draw();
 
     }
 
@@ -20,7 +20,7 @@ public class HangManGame {
         String start = scanner.nextLine();
         if (start.equalsIgnoreCase("s")) {
             System.out.println("Игра начиналась!");
-        }else{
+        } else {
             System.out.println("Вы вышли из игры");
 
         }
@@ -44,22 +44,57 @@ public class HangManGame {
         }
         String secretWord = list.get(random.nextInt(list.size()));
         System.out.println("Слово загадано\n");
+        System.out.println(secretWord);
         getSecretWords(secretWord);
 
     }
 
+
+    public  static  void  draw(){
+
+    }
+
+
+
+
+
+
+
+
+
     public static void getSecretWords(String word) {//не готово/
-      String lockWord ="";
-             lockWord= word.replaceAll("[а-яА-Я]", "_");
+        StringBuilder lockWord = new StringBuilder();
+        List<String> list = new ArrayList<>();
+        lockWord.append(word.replaceAll("[а-яА-Я]", "_"));
+        int countError = 0;// для ошибок кол=во
+        System.out.println("Введите букву: ");
+        Scanner sc = new Scanner(System.in);
+        String letter = "";
 
-        for (int i = 0; i <word.length(); i++) {
-            for (int j = 0; j < lockWord.length(); j++) {
-
+        while (!lockWord.toString().equalsIgnoreCase(word) && countError != 5) {
+            letter = sc.nextLine();
+            boolean found = false;
+            for (int i = 0; i < word.length(); i++) {
+                System.out.print("-");
+                if (letter.equalsIgnoreCase(String.valueOf(word.charAt(i)))) {
+                    found = true;
+                    lockWord.setCharAt(i, letter.charAt(0));//заменяем символ
+                }
             }
-        }
-        System.out.println("\tСлово : " + lockWord);
+            if (!found) {
+                list.add(letter);
+                countError++;
+            }
 
+            System.out.println();
+                System.out.println("\tСлово : " + lockWord + "\n\tОшибки: (" + countError + "):" + list + "\n\tБуква: " + letter );
+
+
+        }
 }
+
+
+
 
 
 
