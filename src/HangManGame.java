@@ -19,16 +19,16 @@ wordSelector.playGame(word.randomWord());
 
     }
         public void showInfo () {
-            System.out.printf( "Добро пожаловать в Висилицу!");
-            System.out.println("Ввведите \"s\"-tart  для начала игры,иначе \"e\"-xit для выхода.");
+            System.out.println("\t\nДобро пожаловать в Виселицу!");
+            System.out.println("\tВвведите \"С\"-тарт  для начала игры,иначе \"В\"-ыход.");
 
         }
 
         public  boolean startsGame() {//старт
             Scanner scanner = new Scanner(System.in);
             String start = scanner.nextLine();
-            return start.equalsIgnoreCase("s");
-
+            return start.equalsIgnoreCase("С");
         }
+
     }
 
