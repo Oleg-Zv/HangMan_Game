@@ -9,7 +9,8 @@ public class WordSelector {
     //и запрос на повтор игры
 
     public void  playGame(String word, HangmanDrawer drawer, GameView view, Scanner sc){
-         //view.showInfo();
+        System.out.println("\tИгра начинается ^_^");
+        System.out.println("\tСлово Загадано!\n");
 
         StringBuilder lockWord = new StringBuilder();
         lockWord.append(word.replaceAll("[а-яА-Я]", "_"));
@@ -41,12 +42,14 @@ public class WordSelector {
             view.playInfo(lockWord, errorsList, countError,tryCount, letter);
 
         }
+        if(lockWord.toString().equalsIgnoreCase(word)){
+            view.winGameMessage(lockWord, word);
+    } else {
+          view.overGameMessage(countError, word);
+        }
+        }
 
-        view.winAndOver(lockWord, word, countError);
-
-
-    }
-    public void checkLetter(String letter){
+        public void checkLetter(String letter){
         if(letter.length()>1){
             System.out.println("Некорректный ввод! Введите одну букву!");
         }

@@ -8,17 +8,16 @@ public class GameView {
         System.out.println("\t\nДобро пожаловать в Виселицу!");
         System.out.println("\tВвведите \"С\"для Старта, иначе \"В\"для Выхода.");
         Scanner scanner = new Scanner(System.in);
-        String start = scanner.nextLine();
+
       while (true){
+          String start = scanner.nextLine();
           if(start.equalsIgnoreCase("С")){
-              System.out.println("\tИгра начинается ^_^");
               break;
           } else if (start.equalsIgnoreCase("В")) {
               System.exit(0);
           }else {
-              System.out.println("Неверный ввод! Повторите попытку");
-             showInfo();
-             break;
+              System.out.println("Повторите попытку! Введите:");
+              System.out.println("\t\"С\"для старта, иначе \"В\"для выхода.");
           }
       }
     }
@@ -30,12 +29,15 @@ public class GameView {
         System.out.println("\tБуква: " + letter);
     }
 
-    public void winAndOver(StringBuilder lockWord, String word, int countError) {
+    public void winGameMessage(StringBuilder lockWord, String word) {
 
         if (lockWord.toString().equalsIgnoreCase(word)) {
             System.out.println("\n\tУра! Вы победили! ^_^");
         }
-        if(countError>=6){
+    }
+
+public void overGameMessage(int countError,String word){
+        if(countError>=6) {
             System.out.printf("\nОй! Вы проиграли! -_-\n\tСлово было: %s", word);
         }
 

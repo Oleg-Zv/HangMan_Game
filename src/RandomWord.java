@@ -27,10 +27,8 @@ public class RandomWord {
         if (wordsList.isEmpty()) {
             throw new IOException("Лист пуст, проверьте содержимое файла: " + PATH);
         }
-        String secretWord = wordsList.get(random.nextInt(wordsList.size()));
-        System.out.println("\tСЛОВО ЗАГАДАНО!\n");
         //System.out.println(secretWord);
-        return secretWord;
+        return wordsList.get(random.nextInt(wordsList.size()));
     }
 }
 
