@@ -5,36 +5,19 @@ import java.util.Scanner;
 
 public class HangManGame {
     public static void main(String[] args) throws IOException {
+        GameView gameView = new GameView();
+        if(!gameView.showInfo())
+            return;
 
-        HangManGame game = new HangManGame();
-        game.showInfo();
-        game.startsGame();
 
         RandomWord word = new RandomWord();
 
         HangmanDrawer drawer = new HangmanDrawer();
 
-        GameView gameView = new GameView();
-
         WordSelector wordSelector = new WordSelector();
-        wordSelector.playGame(word.randomWord(),drawer,gameView, new Scanner(System.in));
+        wordSelector.playGame(word.randomWord(), drawer, gameView, new Scanner(System.in));
 
 
-
-
-
-    }
-
-    public void showInfo() {
-        System.out.println("\t\nДобро пожаловать в Виселицу!");
-        System.out.println("\tВвведите \"С\"-тарт  для начала игры,иначе \"В\"-ыход.");
-
-    }
-
-    public boolean startsGame() {//старт
-        Scanner scanner = new Scanner(System.in);
-        String start = scanner.nextLine();
-        return start.equalsIgnoreCase("С");
     }
 
 }

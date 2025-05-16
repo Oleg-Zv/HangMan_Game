@@ -75,7 +75,7 @@ public class HangmanDrawer {
          case 3 -> System.out.println(hangman[3]);
          case 4 -> System.out.println(hangman[4]);
          case 5 -> System.out.println(hangman[5]);
-         case 6 -> System.out.println(hangman[6] + "\nВы проигали!\n\tСлово было: " + "<" + word + ">");
+         case 6 -> System.out.println(hangman[6] );
      }
 
     }

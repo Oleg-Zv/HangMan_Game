@@ -4,8 +4,6 @@ import java.util.Scanner;
 
 public class WordSelector {
 
-    private final int COUNT_ERROR = 6;
-
 
     public void  playGame(String word, HangmanDrawer drawer, GameView view, Scanner sc){
         StringBuilder lockWord = new StringBuilder();
@@ -14,10 +12,9 @@ public class WordSelector {
         List<String> errorsList = new ArrayList<>();
         int countError = 0;
         int tryCount =6;
-        drawer.draw(countError,word);
 
-        while (!lockWord.toString().equalsIgnoreCase(word) && countError != COUNT_ERROR) {
-            System.out.println("Введите букву: ");
+        while (!lockWord.toString().equalsIgnoreCase(word) && countError!=6) {
+            System.out.println("\nВведите букву: ");
 
            String letter = sc.nextLine();
             boolean found = false;
@@ -25,7 +22,6 @@ public class WordSelector {
                 if (letter.equalsIgnoreCase(String.valueOf(word.charAt(i)))) {
                     found = true;
                     lockWord.setCharAt(i, letter.charAt(0));//заменяем символ _ на букву
-
                 }
             }
             if (!found) {
@@ -33,13 +29,11 @@ public class WordSelector {
                 countError++;
                 tryCount--;
             }
-
-            view.playInfo(lockWord, errorsList, countError,tryCount, letter);
             drawer.draw(countError,word);
+            view.playInfo(lockWord, errorsList, countError,tryCount, letter);
 
         }
-        if(lockWord.toString().equalsIgnoreCase(word))
-            System.out.println("\tУра! Вы победили!");
 
+        view.getWinAndOver(lockWord, word, countError);
     }
 }
