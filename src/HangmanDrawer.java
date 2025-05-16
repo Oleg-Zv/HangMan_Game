@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class HangmanDrawer {
 
-    public void draw(int countError, String word) {
+    public void draw(int countError) {
         String[] hangman = {
                         "     *=========*  \n" +
                         "     |         |  \n" +

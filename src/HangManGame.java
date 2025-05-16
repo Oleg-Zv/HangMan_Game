@@ -6,9 +6,7 @@ import java.util.Scanner;
 public class HangManGame {
     public static void main(String[] args) throws IOException {
         GameView gameView = new GameView();
-        if(!gameView.showInfo())
-            return;
-
+        gameView.showInfo();
 
         RandomWord word = new RandomWord();
 

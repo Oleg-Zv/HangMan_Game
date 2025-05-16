@@ -4,8 +4,13 @@ import java.util.Scanner;
 
 public class WordSelector {
 
+    //обработка на любой некорректный ввод  при запуске/кроме а или в
+    // обработка длины буквы
+    //и запрос на повтор игры
 
     public void  playGame(String word, HangmanDrawer drawer, GameView view, Scanner sc){
+         //view.showInfo();
+
         StringBuilder lockWord = new StringBuilder();
         lockWord.append(word.replaceAll("[а-яА-Я]", "_"));
 
@@ -13,10 +18,13 @@ public class WordSelector {
         int countError = 0;
         int tryCount =6;
 
+
         while (!lockWord.toString().equalsIgnoreCase(word) && countError!=6) {
             System.out.println("\nВведите букву: ");
 
            String letter = sc.nextLine();
+           checkLetter(letter);
+
             boolean found = false;
             for (int i = 0; i < word.length(); i++) {
                 if (letter.equalsIgnoreCase(String.valueOf(word.charAt(i)))) {
@@ -29,11 +37,18 @@ public class WordSelector {
                 countError++;
                 tryCount--;
             }
-            drawer.draw(countError,word);
+            drawer.draw(countError);
             view.playInfo(lockWord, errorsList, countError,tryCount, letter);
 
         }
 
-        view.getWinAndOver(lockWord, word, countError);
+        view.winAndOver(lockWord, word, countError);
+
+
+    }
+    public void checkLetter(String letter){
+        if(letter.length()>1){
+            System.out.println("Некорректный ввод! Введите одну букву!");
+        }
     }
 }
