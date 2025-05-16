@@ -14,8 +14,10 @@ public class HangManGame {
 
         HangmanDrawer drawer = new HangmanDrawer();
 
+        GameView gameView = new GameView();
+
         WordSelector wordSelector = new WordSelector();
-        wordSelector.playGame(word.randomWord(), drawer);
+        wordSelector.playGame(word.randomWord(),drawer,gameView, new Scanner(System.in));
 
 
 
