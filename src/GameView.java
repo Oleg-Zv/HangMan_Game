@@ -1,12 +1,12 @@
 
-import java.util.List;
 import java.util.Scanner;
+import java.util.Set;
 
 public class GameView {
 
     public void showInfo() {
-        System.out.println("\t\nДобро пожаловать в Виселицу!");
-        System.out.println("\tВвведите \"С\"для Старта, иначе \"В\"для Выхода.");
+       // System.out.println("\t\nДобро пожаловать в Виселицу!");
+        System.out.println("\n\tВвведите \"С\"для Старта, иначе \"В\"для Выхода.");
         Scanner scanner = new Scanner(System.in);
 
       while (true){
@@ -22,9 +22,9 @@ public class GameView {
       }
     }
 
-    public void playInfo(StringBuilder lockWord, List<String> errorsList, int countError, int tryCount, String letter) {
+    public void playInfo(StringBuilder lockWord, Set<String> enteredLetters, int countError, int tryCount, String letter) {
         System.out.println("\tСлово : " + lockWord);
-        System.out.println("\tОшибки: (" + countError + "):" + errorsList);
+        System.out.println("\tОшибки: (" + countError + "):" + enteredLetters);
         System.out.println("\tПопыток осталось: \"" + tryCount + "\"");
         System.out.println("\tБуква: " + letter);
     }
@@ -38,8 +38,8 @@ public class GameView {
 
 public void overGameMessage(int countError,String word){
         if(countError>=6) {
-            System.out.printf("\nОй! Вы проиграли! -_-\n\tСлово было: %s", word);
+            System.out.printf("\nОй! Вы проиграли! -_-\tСлово было: [%s", word + "]");
         }
-
     }
+
 }

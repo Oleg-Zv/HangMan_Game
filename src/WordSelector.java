@@ -4,70 +4,80 @@ public class WordSelector {
 
     //обработка на любой некорректный ввод  при запуске/кроме а или в = +
     // обработка длины буквы = + )
-    //и запрос на повтор игры =
+    //обработка повторных букв верных =+ и неверных = +
+    //и запрос на повтор игры = в процессе
 
-    public void  playGame(String word, HangmanDrawer drawer, GameView view, Scanner sc) {
-        System.out.println("\tИгра начинается ^_^");
-        System.out.println("\tСлово Загадано!\n");
+    public void playGame(String word, HangmanDrawer drawer, GameView view, Scanner sc) {
 
-        StringBuilder lockWord = new StringBuilder();
-        lockWord.append(word.replaceAll("[а-яА-Я]", "_"));
+        do {
+            System.out.println("\tИгра начинается ^_^");
+            System.out.println("\tСлово Загадано!\n");
 
-        List<String> errorsList = new ArrayList<>();
-        Set<String> lettersList = new HashSet<>();
-        int countError = 0;
-        int tryCount = 6;
+            StringBuilder lockWord = new StringBuilder();
+            lockWord.append(word.replaceAll("[а-яА-Я]", "_"));
 
 
-        while (!lockWord.toString().equalsIgnoreCase(word) && countError != 6) {
-            System.out.println("\nВведите букву: ");
+            Set<String> enteredLetters = new HashSet<>();
+            int countError = 0;
+            int tryCount = 6;
 
 
-            String letter = sc.nextLine();
+            while (!lockWord.toString().equalsIgnoreCase(word) && countError != 6) {
+                System.out.println("\nВведите букву: ");
+              String letter = sc.nextLine();
 
-            while (checkLetter(letter)) {
-                System.out.println("Введите Одну букву!");
-                letter = sc.nextLine();
-            }
-
-            if(repeatLetter(lettersList, letter)){
-                System.out.println("Эта буква уже была! Введите другую букву");
-                letter = sc.nextLine();
-            }
-            lettersList.add(letter);
-
-
-            boolean found = false;
-            for (int i = 0; i < word.length(); i++) {
-                if (letter.equalsIgnoreCase(String.valueOf(word.charAt(i)))) {
-                    found = true;
-                    lockWord.setCharAt(i, letter.charAt(0));//заменяем символ _ на букву
+                while (isCheckLetterLength(letter) || isRepeatLetter(enteredLetters, letter) || !isRusEntered(letter)) {
+                    if (isCheckLetterLength(letter)) {
+                        System.out.println("Ошибка! Введите Одну букву");
+                    } else if(isRepeatLetter(enteredLetters,letter)){
+                        System.out.println("Эта буква уже была! Введите другую букву");
+                    }else{
+                        System.out.println("Буква должна быть из Русского алфавита!");
+                    }
+                    letter = sc.nextLine();
                 }
-            }
-            if (!found) {
-                errorsList.add(letter);
-                countError++;
-                tryCount--;
-            }
+
+
+                boolean found = false;
+                for (int i = 0; i < word.length(); i++) {
+                    if (letter.equalsIgnoreCase(String.valueOf(word.charAt(i)))) {
+                        enteredLetters.add(letter);
+                        found = true;
+                        lockWord.setCharAt(i, letter.charAt(0));
+                    }
+                }
+                if (!found) {
+                    enteredLetters.add(letter);
+                    countError++;
+                    tryCount--;
+                }
                 drawer.draw(countError);
-                view.playInfo(lockWord, errorsList, countError, tryCount, letter);
+                view.playInfo(lockWord, enteredLetters, countError, tryCount, letter);
 
             }
-
             if (lockWord.toString().equalsIgnoreCase(word)) {
                 view.winGameMessage(lockWord, word);
             } else {
                 view.overGameMessage(countError, word);
             }
-        }
+            System.out.println("\n\tСыграем ещё?");
+         view.showInfo();
 
-        public boolean checkLetter(String letter){
-       return letter.length()>1;
-        }
 
-        public boolean repeatLetter(Set<String> letterList,String letter){
-       return letterList.contains(letter);
-        }
-        }
+        } while (true);
 
+    }
+    public boolean isRusEntered(String letter){
+        return letter.matches("[а-яА-Я]");
+
+    }
+    public boolean isCheckLetterLength(String letter) {
+        return letter.length() > 1;
+    }
+
+    public boolean isRepeatLetter(Set<String> enteredLetters, String letter) {
+        return enteredLetters.contains(letter);
+    }
+
+}
 
