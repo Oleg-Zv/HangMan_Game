@@ -4,7 +4,7 @@ import java.util.Set;
 
 public class GameView {
 
-    public void showInfo() {
+    public void startMenu() {
        // System.out.println("\t\nДобро пожаловать в Виселицу!");
         System.out.println("\n\tВвведите \"С\"для Старта, иначе \"В\"для Выхода.");
         Scanner scanner = new Scanner(System.in);
@@ -12,6 +12,8 @@ public class GameView {
       while (true){
           String start = scanner.nextLine();
           if(start.equalsIgnoreCase("С")){
+              System.out.println("\tИгра начинается ^_^");
+              System.out.println("\tСлово Загадано!\n");
               break;
           } else if (start.equalsIgnoreCase("В")) {
               System.exit(0);
@@ -36,10 +38,9 @@ public class GameView {
         }
     }
 
-public void overGameMessage(int countError,String word){
-        if(countError>=6) {
+public void overGameMessage(int countError,String word,int SIX){
+        if(countError>=SIX) {
             System.out.printf("\nОй! Вы проиграли! -_-\tСлово было: [%s", word + "]");
         }
     }
-
 }

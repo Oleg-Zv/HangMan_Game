@@ -9,7 +9,6 @@ import java.util.Random;
 public class RandomWord {
     private static final String PATH = "src/Words.txt";
 
-
     public String randomWord() throws IOException {
 
         Random random = new Random();
