@@ -15,8 +15,10 @@
 Три шага до спасения:
 
 1. `git clone https://github.com/Oleg-Zv/HangMan_Game.git`  (Клонируй!)
-2. `Intellij Idea -> Hangman_Game`  (Открывай!)
-3. `Main` (<s>З</s>апускай!)
+  
+3. `Intellij Idea -> Hangman_Game`  (Открывай!)
+  
+5. `Main` (<s>З</s>апускай!)
 
 Вводи буквы и надейся на лучшее! 
 
