@@ -5,7 +5,6 @@ import java.util.Set;
 public class GameView {
 
     public void startMenu() {
-       // System.out.println("\t\nДобро пожаловать в Виселицу!");
         System.out.println("\n\tВвведите \"С\"для Старта, иначе \"В\"для Выхода.");
         Scanner scanner = new Scanner(System.in);
 

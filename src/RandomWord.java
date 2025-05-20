@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Random;
 
 public class RandomWord {
-    private static final String PATH = "src/Words.txt";
+    private static final String PATH = "src/wordlist/Words.txt";
 
     public String randomWord() throws IOException {
 
@@ -21,7 +21,7 @@ public class RandomWord {
                 wordsList.add(line);
             }
         } catch (FileNotFoundException e) {
-            System.out.println("Файл не найден! Проверьте путь");
+           throw new IOException("Файл не найден! Проверьте путь");
         }
         if (wordsList.isEmpty()) {
             throw new IOException("Лист пуст, проверьте содержимое файла: " + PATH);
