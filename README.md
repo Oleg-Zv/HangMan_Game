@@ -14,7 +14,7 @@
 
 Три шага до спасения:
 
-1.(Клонируй!)
+1. (Клонируй!)
    ```bash
     git clone https://github.com/Oleg-Zv/HangMan_Game.git
     ```
