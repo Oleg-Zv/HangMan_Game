@@ -14,10 +14,10 @@
 
 Три шага до спасения:
 
-1. (Клонируй!)
-   ```bash
+1. ```bash
     git clone https://github.com/Oleg-Zv/HangMan_Game.git
     ```
+   (Клонируй!)
     
 3. `Intellij Idea -> Hangman_Game`  (Открывай!)
   
